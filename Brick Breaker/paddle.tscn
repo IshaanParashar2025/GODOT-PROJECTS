@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cagk77rd8x28p"]
+
+[ext_resource type="Texture2D" uid="uid://c6hoesotktruk" path="res://icon.svg" id="1_g417j"]
+[ext_resource type="Script" path="res://paddle.gd" id="1_linrt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dl1f6"]
+size = Vector2(72, 12)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hnafq"]
+radius = 6.0
+
+[node name="Paddle" type="CharacterBody2D"]
+script = ExtResource("1_linrt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dl1f6")
+
+[node name="Icon" type="Sprite2D" parent="."]
+scale = Vector2(0.6875, 0.09375)
+texture = ExtResource("1_g417j")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(38, 0)
+shape = SubResource("CircleShape2D_hnafq")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(-38, 0)
+shape = SubResource("CircleShape2D_hnafq")

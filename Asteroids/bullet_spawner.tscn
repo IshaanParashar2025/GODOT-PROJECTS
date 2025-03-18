@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlvona2dcua7u"]
+
+[ext_resource type="PackedScene" uid="uid://v0vx6fmxyk2" path="res://spawner.tscn" id="1_031w7"]
+[ext_resource type="Script" path="res://bullet_spawner.gd" id="2_vnfue"]
+[ext_resource type="PackedScene" uid="uid://slibehei417j" path="res://bullet.tscn" id="3_7u2xy"]
+
+[node name="BulletSpawner2" instance=ExtResource("1_031w7")]
+script = ExtResource("2_vnfue")
+spawnling_scene = ExtResource("3_7u2xy")

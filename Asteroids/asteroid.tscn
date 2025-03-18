@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://gfadvfnbh81t"]
+
+[ext_resource type="Script" path="res://asteroid.gd" id="1_4j5k1"]
+[ext_resource type="Texture2D" uid="uid://deew46r2fbkr5" path="res://Assets/Astroid.png" id="2_v7v2u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1gcsw"]
+radius = 22.6667
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wemoy"]
+radius = 22.6765
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tqmiq"]
+radius = 22.0101
+
+[node name="Asteroid" type="CharacterBody2D"]
+scale = Vector2(1.5, 1.5)
+collision_layer = 2
+motion_mode = 1
+script = ExtResource("1_4j5k1")
+
+[node name="Astroid" type="Sprite2D" parent="."]
+position = Vector2(4, 1.33333)
+scale = Vector2(0.255639, 0.268734)
+texture = ExtResource("2_v7v2u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1gcsw")
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_wemoy")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" groups=["Asteroids"]]
+shape = SubResource("CircleShape2D_tqmiq")
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

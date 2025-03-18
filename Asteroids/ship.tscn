@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7pqamj1dj3sk"]
+
+[ext_resource type="Script" path="res://ship.gd" id="1_mratw"]
+[ext_resource type="Texture2D" uid="uid://c76247ndcclu7" path="res://Assets/ship1.png" id="2_nmi1o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_welgc"]
+size = Vector2(16, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aijok"]
+size = Vector2(16, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b3ujv"]
+size = Vector2(16, 15)
+
+[node name="Ship" type="CharacterBody2D" groups=["Ship"]]
+collision_mask = 0
+motion_mode = 1
+script = ExtResource("1_mratw")
+
+[node name="Ship1" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_nmi1o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_welgc")
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(1, -3)
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-1, 2.5)
+shape = SubResource("RectangleShape2D_aijok")
+
+[node name="HurtBox" type="Area2D" parent="."]
+position = Vector2(1, -3)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-1, 2.5)
+shape = SubResource("RectangleShape2D_b3ujv")
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

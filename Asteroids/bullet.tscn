@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://slibehei417j"]
+
+[ext_resource type="Texture2D" uid="uid://b76o6s0nrtvbr" path="res://icon.svg" id="1_gyyl3"]
+[ext_resource type="Script" path="res://bullet.gd" id="1_llu2q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7e7n7"]
+size = Vector2(12, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mgbfa"]
+size = Vector2(12.0283, 4.05537)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8po3i"]
+size = Vector2(12.0431, 4.05576)
+
+[node name="Bullet" type="CharacterBody2D" groups=["Bullet"]]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_llu2q")
+
+[node name="Icon" type="Sprite2D" parent="."]
+scale = Vector2(0.09375, 0.03125)
+texture = ExtResource("1_gyyl3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7e7n7")
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0.00394488, -0.0151613)
+shape = SubResource("RectangleShape2D_mgbfa")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0.0162344, 0.0118971)
+shape = SubResource("RectangleShape2D_8po3i")
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
