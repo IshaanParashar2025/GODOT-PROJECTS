@@ -1,0 +1,78 @@
+[gd_scene load_steps=17 format=3 uid="uid://dj5a545pvxuey"]
+
+[ext_resource type="Script" path="res://Enemies/enemies.gd" id="1_pnej1"]
+[ext_resource type="Script" path="res://galaxy_defiance_resources-main/galaxy_defiance_resources-main/components/stats_component.gd" id="2_2a7vg"]
+[ext_resource type="Script" path="res://galaxy_defiance_resources-main/galaxy_defiance_resources-main/components/move_component.gd" id="3_go2nh"]
+[ext_resource type="Script" path="res://galaxy_defiance_resources-main/galaxy_defiance_resources-main/components/scale_component.gd" id="4_d1xgt"]
+[ext_resource type="Script" path="res://galaxy_defiance_resources-main/galaxy_defiance_resources-main/components/flash_component.gd" id="5_ewjq1"]
+[ext_resource type="Script" path="res://galaxy_defiance_resources-main/galaxy_defiance_resources-main/components/shake_component.gd" id="6_w7cwf"]
+[ext_resource type="Script" path="res://galaxy_defiance_resources-main/galaxy_defiance_resources-main/components/hurtbox_component.gd" id="7_xnyki"]
+[ext_resource type="Script" path="res://galaxy_defiance_resources-main/galaxy_defiance_resources-main/components/hitbox_component.gd" id="8_7kjg8"]
+[ext_resource type="Script" path="res://galaxy_defiance_resources-main/galaxy_defiance_resources-main/components/hurt_component.gd" id="9_m8ylj"]
+[ext_resource type="Script" path="res://galaxy_defiance_resources-main/galaxy_defiance_resources-main/components/spawner_component.gd" id="10_hbvmk"]
+[ext_resource type="PackedScene" uid="uid://bspbhkg4pekmx" path="res://galaxy_defiance_resources-main/galaxy_defiance_resources-main/effects/expolsion_effect.tscn" id="11_hhwvl"]
+[ext_resource type="Script" path="res://galaxy_defiance_resources-main/galaxy_defiance_resources-main/components/destroyed_component.gd" id="12_y6xgc"]
+[ext_resource type="Script" path="res://galaxy_defiance_resources-main/galaxy_defiance_resources-main/components/score_component.gd" id="13_jm22m"]
+[ext_resource type="Resource" uid="uid://by13fgdsrevu" path="res://Game_Stats.tres" id="14_f4yro"]
+[ext_resource type="AudioStream" uid="uid://cvl16n7lctkfk" path="res://galaxy_defiance_resources-main/galaxy_defiance_resources-main/sounds/hit_sound.wav" id="15_ox13q"]
+[ext_resource type="Script" path="res://galaxy_defiance_resources-main/galaxy_defiance_resources-main/components/variable_pitch_audio_stream_player.gd" id="16_i5l0l"]
+
+[node name="Enemies" type="Node2D"]
+script = ExtResource("1_pnej1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="StatsComponent" type="Node" parent="."]
+script = ExtResource("2_2a7vg")
+
+[node name="MoveComponent" type="Node" parent="." node_paths=PackedStringArray("actor")]
+script = ExtResource("3_go2nh")
+actor = NodePath("..")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="ScaleComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("4_d1xgt")
+sprite = NodePath("../AnimatedSprite2D")
+
+[node name="FlashComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("5_ewjq1")
+sprite = NodePath("../AnimatedSprite2D")
+
+[node name="ShakeComponent" type="Node" parent="." node_paths=PackedStringArray("node")]
+script = ExtResource("6_w7cwf")
+node = NodePath("../AnimatedSprite2D")
+
+[node name="HurtboxComponent" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("7_xnyki")
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 0
+script = ExtResource("8_7kjg8")
+
+[node name="HurtComponent" type="Node" parent="." node_paths=PackedStringArray("stats_component", "hurtbox_component")]
+script = ExtResource("9_m8ylj")
+stats_component = NodePath("../StatsComponent")
+hurtbox_component = NodePath("../HurtboxComponent")
+
+[node name="SpawnerComponent" type="Node2D" parent="."]
+script = ExtResource("10_hbvmk")
+scene = ExtResource("11_hhwvl")
+
+[node name="DestroyedComponent" type="Node" parent="." node_paths=PackedStringArray("actor", "stats_component", "destroy_effect_spawner_component")]
+script = ExtResource("12_y6xgc")
+actor = NodePath("..")
+stats_component = NodePath("../StatsComponent")
+destroy_effect_spawner_component = NodePath("../SpawnerComponent")
+
+[node name="ScoreComponent" type="Node" parent="."]
+script = ExtResource("13_jm22m")
+game_stats = ExtResource("14_f4yro")
+
+[node name="VariablePitchAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_ox13q")
+volume_db = 5.0
+bus = &"Sound"
+script = ExtResource("16_i5l0l")

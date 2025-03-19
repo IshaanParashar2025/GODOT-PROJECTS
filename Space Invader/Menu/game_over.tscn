@@ -1,0 +1,85 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0ew4ihqb62in"]
+
+[ext_resource type="Script" path="res://Menu/game_over.gd" id="1_sjk8f"]
+[ext_resource type="PackedScene" uid="uid://co5nrx7iok4r7" path="res://galaxy_defiance_resources-main/galaxy_defiance_resources-main/effects/space_background.tscn" id="2_er6ha"]
+[ext_resource type="Resource" uid="uid://by13fgdsrevu" path="res://Game_Stats.tres" id="2_v7iqt"]
+[ext_resource type="LabelSettings" uid="uid://bn0xaoy1imxxo" path="res://galaxy_defiance_resources-main/galaxy_defiance_resources-main/fonts/Title_label_settings.tres" id="3_w4r0m"]
+[ext_resource type="LabelSettings" uid="uid://c6r4wbogeumad" path="res://galaxy_defiance_resources-main/galaxy_defiance_resources-main/fonts/Default_laber_Settings.tres" id="4_s02xq"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sjk8f")
+game_stats = ExtResource("2_v7iqt")
+
+[node name="SpaceBackground" parent="." instance=ExtResource("2_er6ha")]
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="GameOverLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Game Over!"
+label_settings = ExtResource("3_w4r0m")
+horizontal_alignment = 1
+
+[node name="Control2" type="Control" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="ScoreHboxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ScoreLabel" type="Label" parent="CenterContainer/VBoxContainer/ScoreHboxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "score"
+label_settings = ExtResource("4_s02xq")
+
+[node name="ScoreValueLabel" type="Label" parent="CenterContainer/VBoxContainer/ScoreHboxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+text = "0"
+label_settings = ExtResource("4_s02xq")
+
+[node name="HighHboxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HighScoreLabel" type="Label" parent="CenterContainer/VBoxContainer/HighHboxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Highscore"
+label_settings = ExtResource("4_s02xq")
+
+[node name="HighScoreValueLabel" type="Label" parent="CenterContainer/VBoxContainer/HighHboxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+text = "0"
+label_settings = ExtResource("4_s02xq")
+
+[node name="Control" type="Control" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="MenuLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Press 'space' to 
+Return to Menu"
+label_settings = ExtResource("4_s02xq")
+horizontal_alignment = 1

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PlayerControler" load_steps=2 format=3 uid="uid://do8g0wgcjnet8"]
+
+[ext_resource type="Script" path="res://player_controler.gd" id="1_7maan"]
+
+[resource]
+script = ExtResource("1_7maan")
+player_index_x = 0
+player_index_y = 0
+move_left = "P2_move_left"
+move_right = "P2_move_right"
+move_up = "P2_move_up"
+move_down = "P2_move_down"
+boost = "P2_boost"
+player_check = "P2_passed"

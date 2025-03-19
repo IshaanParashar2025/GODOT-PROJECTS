@@ -1,0 +1,62 @@
+[gd_scene load_steps=11 format=3 uid="uid://bspbhkg4pekmx"]
+
+[ext_resource type="Texture2D" uid="uid://cm2vv2tp0xqcw" path="res://galaxy_defiance_resources-main/galaxy_defiance_resources-main/assets/explosion.png" id="1_amkc4"]
+[ext_resource type="Script" path="res://galaxy_defiance_resources-main/galaxy_defiance_resources-main/components/onetime_animated_effect.gd" id="2_lv31g"]
+[ext_resource type="AudioStream" uid="uid://bt8ag4je61iiy" path="res://galaxy_defiance_resources-main/galaxy_defiance_resources-main/sounds/explosion_sound.wav" id="3_lbhpy"]
+[ext_resource type="Script" path="res://galaxy_defiance_resources-main/galaxy_defiance_resources-main/components/variable_pitch_audio_stream_player.gd" id="4_fweur"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkjpo"]
+atlas = ExtResource("1_amkc4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwrkp"]
+atlas = ExtResource("1_amkc4")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0xf2"]
+atlas = ExtResource("1_amkc4")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o054r"]
+atlas = ExtResource("1_amkc4")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ar6x1"]
+atlas = ExtResource("1_amkc4")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_adolx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rkjpo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vwrkp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0xf2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o054r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ar6x1")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="ExpolsionEffect" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_adolx")
+autoplay = "default"
+frame = 3
+frame_progress = 0.372602
+script = ExtResource("2_lv31g")
+
+[node name="VariablePitchAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_lbhpy")
+bus = &"Sound"
+script = ExtResource("4_fweur")
+auto_play_with_variance = true

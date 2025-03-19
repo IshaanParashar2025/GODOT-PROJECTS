@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://co5nrx7iok4r7"]
+
+[ext_resource type="Texture2D" uid="uid://dlv5koy6rif4m" path="res://galaxy_defiance_resources-main/galaxy_defiance_resources-main/assets/space.png" id="1_5c6sc"]
+[ext_resource type="Script" path="res://galaxy_defiance_resources-main/galaxy_defiance_resources-main/effects/space_background.gd" id="1_eyooj"]
+[ext_resource type="Texture2D" uid="uid://dyx5c5w1uy8uj" path="res://galaxy_defiance_resources-main/galaxy_defiance_resources-main/assets/far_stars.png" id="2_prfow"]
+[ext_resource type="Texture2D" uid="uid://bku37x2m6s4b6" path="res://galaxy_defiance_resources-main/galaxy_defiance_resources-main/assets/close_stars.png" id="3_yoqx3"]
+
+[node name="SpaceBackground" type="ParallaxBackground"]
+script = ExtResource("1_eyooj")
+
+[node name="SpaceLayer" type="ParallaxLayer" parent="."]
+unique_name_in_owner = true
+motion_mirroring = Vector2(0, 240)
+
+[node name="Space" type="TextureRect" parent="SpaceLayer"]
+offset_right = 192.0
+offset_bottom = 240.0
+texture = ExtResource("1_5c6sc")
+stretch_mode = 1
+
+[node name="FarStarsLayer" type="ParallaxLayer" parent="."]
+unique_name_in_owner = true
+motion_mirroring = Vector2(0, 240)
+
+[node name="FarStars" type="TextureRect" parent="FarStarsLayer"]
+offset_right = 192.0
+offset_bottom = 240.0
+texture = ExtResource("2_prfow")
+stretch_mode = 1
+
+[node name="CloseSrtarsLayer" type="ParallaxLayer" parent="."]
+unique_name_in_owner = true
+motion_mirroring = Vector2(0, 240)
+
+[node name="CloseStars" type="TextureRect" parent="CloseSrtarsLayer"]
+offset_right = 192.0
+offset_bottom = 240.0
+texture = ExtResource("3_yoqx3")
+stretch_mode = 1

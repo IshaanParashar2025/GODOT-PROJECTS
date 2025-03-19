@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://bp5fqfu4ad0o0"]
+
+[ext_resource type="PackedScene" uid="uid://dj5a545pvxuey" path="res://Enemies/enemies.tscn" id="1_dlurk"]
+[ext_resource type="Script" path="res://Enemies/yellow_enemies.gd" id="2_a8ma2"]
+[ext_resource type="Texture2D" uid="uid://dem32tbwuq3fu" path="res://galaxy_defiance_resources-main/galaxy_defiance_resources-main/assets/yellow_enemy.png" id="2_qg407"]
+[ext_resource type="Script" path="res://galaxy_defiance_resources-main/galaxy_defiance_resources-main/components/border_bounce_component.gd" id="4_8340a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ur2ky"]
+atlas = ExtResource("2_qg407")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_un0dw"]
+atlas = ExtResource("2_qg407")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_im5ti"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ur2ky")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_un0dw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jvxh1"]
+size = Vector2(16, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_akfcg"]
+size = Vector2(14, 8)
+
+[node name="YellowEnemies" instance=ExtResource("1_dlurk")]
+script = ExtResource("2_a8ma2")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_im5ti")
+autoplay = "default"
+frame_progress = 0.337807
+
+[node name="StatsComponent" parent="." index="1"]
+health = 5
+
+[node name="MoveComponent" parent="." index="2"]
+velocity = Vector2(0, 10)
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="3"]
+position = Vector2(4.76837e-07, 2.38419e-07)
+scale = Vector2(0.7, 0.4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" index="0"]
+shape = SubResource("RectangleShape2D_jvxh1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" index="0"]
+shape = SubResource("RectangleShape2D_akfcg")
+debug_color = Color(0.556863, 0, 0.105882, 0.419608)
+
+[node name="ScoreComponent" parent="." index="12"]
+adjust_amount = 10
+
+[node name="BorderBounceComponent" type="Node" parent="." index="13" node_paths=PackedStringArray("actor", "move_component")]
+script = ExtResource("4_8340a")
+actor = NodePath("..")
+move_component = NodePath("../MoveComponent")

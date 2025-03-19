@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2jlopst66xad"]
+
+[ext_resource type="AudioStream" uid="uid://ch5may5ah612q" path="res://galaxy_defiance_resources-main/galaxy_defiance_resources-main/sounds/music.ogg" id="1_ivehc"]
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_ivehc")
+autoplay = true
+bus = &"Music"

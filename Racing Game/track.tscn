@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://8v0pjx6jv13d"]
+
+[ext_resource type="Script" path="res://track.gd" id="1_l0pa5"]
+[ext_resource type="PackedScene" uid="uid://b5whyf61a6qk4" path="res://car.tscn" id="1_y3urj"]
+[ext_resource type="Resource" uid="uid://p4f44hr44lk6" path="res://Player1_Controls.tres" id="2_g6pqs"]
+[ext_resource type="Resource" uid="uid://do8g0wgcjnet8" path="res://Player2_controls.tres" id="3_6em2o"]
+[ext_resource type="Texture2D" uid="uid://dxfo8fpu0rhqb" path="res://track.png" id="4_qndu1"]
+[ext_resource type="PackedScene" uid="uid://dnt014k1qiqt3" path="res://check_point.tscn" id="5_pjq0e"]
+[ext_resource type="PackedScene" uid="uid://cghdo6u8b1dhr" path="res://finish_line.tscn" id="6_7h56m"]
+
+[node name="Track" type="Node2D"]
+script = ExtResource("1_l0pa5")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="Track" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(577.5, 322.5)
+scale = Vector2(1.40049, 1.40217)
+texture = ExtResource("4_qndu1")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(476, 264)
+polygon = PackedVector2Array(-155, -129, -141, -135, -131, -137, -120, -140, -20, -158, 56, -165, 158, -165, 247, -156, 333, -140, 396, -121, 459, -94, 501, -69, 536, -39, 557, -12, 571, 26, 571, 55, 551, 102, 517, 137, 455, 177, 382, 206, 306, 227, 199, 243, 142, 247, 60, 247, -64, 233, -148, 213, -240, 178, -306, 135, -342, 96, -358, 54, -358, 26, -349, -1, -327, -33, -291, -67, -240, -97, -181, -122)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+build_mode = 1
+polygon = PackedVector2Array(2, 2, 491, 2, 308, 46, 206, 75, 73, 160, 31, 214, 7, 261, 3, 357)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(1155, 648)
+rotation = 3.14159
+build_mode = 1
+polygon = PackedVector2Array(2, 2, 1099, 3.99988, 1150, 3.99988, 1150, 291, 1113, 209, 1010, 128, 876, 71.9999, 741, 38.9999, 538, 30.9999, 390, 46.9999, 324, 61.9999, 210, 98.9999, 140, 131, 43, 215, 18, 262, 4, 293)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(1149, 0)
+polygon = PackedVector2Array(2, 0, -655, 0, -739, 24, -635, 14, -464, 13, -365, 27, -273, 52, -150.885, 104.245, -94, 142, -36, 199, -7, 243, 1, 303, 3, 357, 9, 304, 6, 245)
+
+[node name="Car" parent="." instance=ExtResource("1_y3urj")]
+position = Vector2(153, 187)
+motion_mode = 1
+player_control = ExtResource("2_g6pqs")
+
+[node name="Car2" parent="." instance=ExtResource("1_y3urj")]
+position = Vector2(170, 125)
+collision_layer = 2
+collision_mask = 2
+motion_mode = 1
+player_control = ExtResource("3_6em2o")
+
+[node name="CheckPoint" parent="." instance=ExtResource("5_pjq0e")]
+position = Vector2(587, 568)
+rotation = 1.5708
+
+[node name="CheckPoint2" parent="." instance=ExtResource("5_pjq0e")]
+position = Vector2(1098, 305)
+
+[node name="CheckPoint3" parent="." instance=ExtResource("5_pjq0e")]
+position = Vector2(61, 296)
+
+[node name="FinishLine" parent="." instance=ExtResource("6_7h56m")]
+position = Vector2(541, 50)
+rotation = 1.5708
