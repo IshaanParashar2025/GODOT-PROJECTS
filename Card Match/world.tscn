@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqptosiq7xj7q"]
+
+[ext_resource type="PackedScene" uid="uid://6c1tmjrb8a5m" path="res://card_handler.tscn" id="1_01mp7"]
+[ext_resource type="PackedScene" uid="uid://07he4sb2x0dh" path="res://card.tscn" id="1_i2ywx"]
+[ext_resource type="PackedScene" uid="uid://cj2wbet0w77rt" path="res://score_handler.tscn" id="3_onbee"]
+[ext_resource type="PackedScene" uid="uid://cbnx6uv2mju7v" path="res://score_display.tscn" id="4_xq582"]
+
+[node name="World" type="Node2D"]
+
+[node name="Card Handler" parent="." instance=ExtResource("1_01mp7")]
+
+[node name="Card" parent="Card Handler" instance=ExtResource("1_i2ywx")]
+position = Vector2(192, 120)
+
+[node name="Card2" parent="Card Handler" instance=ExtResource("1_i2ywx")]
+position = Vector2(880, 528)
+
+[node name="Card3" parent="Card Handler" instance=ExtResource("1_i2ywx")]
+position = Vector2(648, 328)
+
+[node name="Card4" parent="Card Handler" instance=ExtResource("1_i2ywx")]
+position = Vector2(424, 536)
+
+[node name="Card5" parent="Card Handler" instance=ExtResource("1_i2ywx")]
+position = Vector2(192, 536)
+
+[node name="Card6" parent="Card Handler" instance=ExtResource("1_i2ywx")]
+position = Vector2(880, 328)
+
+[node name="Card7" parent="Card Handler" instance=ExtResource("1_i2ywx")]
+position = Vector2(648, 120)
+
+[node name="Card8" parent="Card Handler" instance=ExtResource("1_i2ywx")]
+position = Vector2(424, 120)
+
+[node name="Card9" parent="Card Handler" instance=ExtResource("1_i2ywx")]
+position = Vector2(192, 328)
+
+[node name="Card10" parent="Card Handler" instance=ExtResource("1_i2ywx")]
+position = Vector2(880, 128)
+
+[node name="Card11" parent="Card Handler" instance=ExtResource("1_i2ywx")]
+position = Vector2(648, 536)
+
+[node name="Card12" parent="Card Handler" instance=ExtResource("1_i2ywx")]
+position = Vector2(424, 328)
+
+[node name="ScoreHandler" parent="." instance=ExtResource("3_onbee")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreDisplay" parent="CanvasLayer" instance=ExtResource("4_xq582")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 328)
