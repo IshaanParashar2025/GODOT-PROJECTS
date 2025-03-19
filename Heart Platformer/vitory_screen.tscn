@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxh6lnvbpa8kd"]
+
+[ext_resource type="Script" path="res://vitory_screen.gd" id="1_wdda6"]
+
+[node name="VitoryScreen" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wdda6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "VICTORY"
+horizontal_alignment = 1
+
+[node name="MainMenuButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 16)
+layout_mode = 2
+text = "RETURN TO MAIN MENU"
+
+[connection signal="pressed" from="VBoxContainer/MainMenuButton" to="." method="_on_button_pressed"]
