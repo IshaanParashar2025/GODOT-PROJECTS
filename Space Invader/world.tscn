@@ -1,0 +1,26 @@
+[gd_scene load_steps=7 format=3 uid="uid://ih2bvfdrj34g"]
+
+[ext_resource type="Script" path="res://world.gd" id="1_egw1r"]
+[ext_resource type="PackedScene" uid="uid://8u4ra7bainkx" path="res://Player Ship/ship.tscn" id="1_iv5b5"]
+[ext_resource type="PackedScene" uid="uid://co5nrx7iok4r7" path="res://galaxy_defiance_resources-main/galaxy_defiance_resources-main/effects/space_background.tscn" id="2_7gjc1"]
+[ext_resource type="Resource" uid="uid://by13fgdsrevu" path="res://Game_Stats.tres" id="2_p6e8v"]
+[ext_resource type="PackedScene" uid="uid://bacxvco0byurp" path="res://Enemies/enemy_genrator.tscn" id="4_cxqrw"]
+[ext_resource type="LabelSettings" uid="uid://c6r4wbogeumad" path="res://galaxy_defiance_resources-main/galaxy_defiance_resources-main/fonts/Default_laber_Settings.tres" id="6_jjpxo"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_egw1r")
+game_stats = ExtResource("2_p6e8v")
+
+[node name="Ship" parent="." instance=ExtResource("1_iv5b5")]
+position = Vector2(82, 216)
+
+[node name="SpaceBackground" parent="." instance=ExtResource("2_7gjc1")]
+
+[node name="EnemyGenrator" parent="." instance=ExtResource("4_cxqrw")]
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_right = 192.0
+offset_bottom = 23.0
+text = "Score "
+label_settings = ExtResource("6_jjpxo")
+horizontal_alignment = 1
