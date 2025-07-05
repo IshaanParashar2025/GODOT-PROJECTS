@@ -1,0 +1,88 @@
+[gd_scene load_steps=7 format=3 uid="uid://b4wfk37cmelwf"]
+
+[ext_resource type="PackedScene" uid="uid://njj283yagdlp" path="res://player.tscn" id="1_3hls8"]
+[ext_resource type="PackedScene" uid="uid://cxtwv5rkmspc7" path="res://newer targer.tscn" id="1_hbghi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ilcil"]
+size = Vector3(20, 1, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3hls8"]
+size = Vector3(20, 5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hbghi"]
+size = Vector3(1, 4.73486, 12)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hn12h"]
+size = Vector3(1, 4.04147, 10)
+
+[node name="Level 2" type="Node"]
+
+[node name="Stage" type="Node" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Stage"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stage/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.489715, 0)
+shape = SubResource("BoxShape3D_ilcil")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.128035, -5.31356)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stage/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39147, -0.173061)
+shape = SubResource("BoxShape3D_3hls8")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="Stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.128035, 5.67877)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stage/StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39147, -0.173061)
+shape = SubResource("BoxShape3D_3hls8")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="Stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5045, 1.675, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stage/StaticBody3D4"]
+shape = SubResource("BoxShape3D_hbghi")
+
+[node name="StaticBody3D5" type="StaticBody3D" parent="Stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.505, 1.675, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stage/StaticBody3D5"]
+shape = SubResource("BoxShape3D_hbghi")
+
+[node name="StaticBody3D6" type="StaticBody3D" parent="Stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8537, 1.675, 0)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stage/StaticBody3D6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.273699, 0)
+shape = SubResource("BoxShape3D_hn12h")
+
+[node name="Player" parent="." instance=ExtResource("1_3hls8")]
+transform = Transform3D(0.0382308, 0, 0.999269, 0, 1, 0, -0.999269, 0, 0.0382308, -6.16013, 1.68707, 1.20294)
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Target Position" parent="Node" instance=ExtResource("1_hbghi")]
+transform = Transform3D(0.0715322, 0, -0.997438, 0, 1, 0, 0.997438, 0, 0.0715322, 6.186, 2.86375, -0.0184834)
+moving = true
+flying = true
+move_speed = 15
+
+[node name="Target Position2" parent="Node" instance=ExtResource("1_hbghi")]
+transform = Transform3D(0.0404283, 0, -0.999183, 0, 1, 0, 0.999183, 0, 0.0404283, 3.01775, 2.86205, -0.170254)
+moving = true
+flying = true
+move_speed = 10
+
+[node name="Target Position3" parent="Node" instance=ExtResource("1_hbghi")]
+transform = Transform3D(-0.0612924, 0, -0.99812, 0, 1, 0, 0.99812, 0, -0.0612924, 8.25434, 2.77039, 0.0714335)
+moving = true
+flying = true
+
+[node name="Target Position4" parent="Node" instance=ExtResource("1_hbghi")]
+transform = Transform3D(0.0243101, 0, -0.999705, 0, 1, 0, 0.999705, 0, 0.0243101, 1.59726, 2.95222, 0.346426)
+moving = true
+flying = true

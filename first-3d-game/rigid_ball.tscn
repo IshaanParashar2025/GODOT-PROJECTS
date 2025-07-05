@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cim5y43ijiuok"]
+
+[ext_resource type="Script" uid="uid://b0tctuiteouw2" path="res://rigid_ball.gd" id="1_bwgbw"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kn7h8"]
+radius = 0.21
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bwgbw"]
+albedo_color = Color(0, 0.219608, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_g5xl5"]
+material = SubResource("StandardMaterial3D_bwgbw")
+radius = 0.21
+height = 0.42
+
+[node name="Rigid Ball" type="RigidBody3D" groups=["Pickable"]]
+script = ExtResource("1_bwgbw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_kn7h8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_g5xl5")
+
+[node name="Spin Timer" type="Timer" parent="."]
+process_callback = 0
+
+[connection signal="timeout" from="Spin Timer" to="." method="_stop_spinning"]

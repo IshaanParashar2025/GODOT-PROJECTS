@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c25ewooosdg15"]
+
+[ext_resource type="Script" uid="uid://bcivjv00kbgg8" path="res://level_mangaer.gd" id="1_kqi66"]
+
+[node name="Level Mangaer" type="Node"]
+script = ExtResource("1_kqi66")

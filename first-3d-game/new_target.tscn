@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://1q2suyu1rs6h"]
+
+[ext_resource type="Script" uid="uid://cdp7dhcrxetk" path="res://new_target.gd" id="1_jws7h"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vn5po"]
+height = 0.255
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jws7h"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vn5po"]
+material = SubResource("StandardMaterial3D_jws7h")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jws7h"]
+radius = 1.56
+
+[node name="NewTarget" type="CharacterBody3D"]
+script = ExtResource("1_jws7h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_vn5po")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -5.63658e-09, 1, 0, -0.12895, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_vn5po")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Explosion Radius" type="Area3D" parent="."]
+process_mode = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Explosion Radius"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("SphereShape3D_jws7h")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Explosion Radius" to="." method="_on_explosion_radius_body_entered"]
+[connection signal="body_exited" from="Explosion Radius" to="." method="_on_explosion_radius_body_exited"]

@@ -1,0 +1,117 @@
+[gd_scene load_steps=12 format=3 uid="uid://beac8hhnrag0c"]
+
+[ext_resource type="PackedScene" uid="uid://njj283yagdlp" path="res://player.tscn" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://buubbsm5kkjds" path="res://draw_node.gd" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://cxtwv5rkmspc7" path="res://newer targer.tscn" id="4_lquwl"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ig7tw"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_0xm2m"]
+sky_material = SubResource("ProceduralSkyMaterial_ig7tw")
+
+[sub_resource type="Environment" id="Environment_h2yge"]
+background_mode = 2
+sky = SubResource("Sky_0xm2m")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_ig7tw"]
+size = Vector3(10, 0.5, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0xm2m"]
+size = Vector3(5, 0.75, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lquwl"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7mycd"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_272bh"]
+albedo_color = Color(1, 1, 0, 1)
+
+[node name="level 1" type="Node"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_h2yge")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.924258, 0.236709, -0.299527, -0.381726, -0.56134, 0.73429, 0.00567669, 0.793011, 0.609181, 0, 12.1359, 0)
+shadow_enabled = true
+
+[node name="CSGTorus3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGTorus3D"]
+mesh = SubResource("BoxMesh_ig7tw")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGTorus3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.194, 5.50487)
+size = Vector3(11, 3.388, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGTorus3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.194, -5.27935)
+size = Vector3(11, 3.388, 0.5)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGTorus3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.26335, 1.194, 0)
+size = Vector3(0.5, 3.388, 10)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGTorus3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.27092, 1.194, 0)
+size = Vector3(0.5, 3.388, 10)
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="CSGTorus3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.644, 2.423)
+mesh = SubResource("BoxMesh_0xm2m")
+material = SubResource("StandardMaterial3D_lquwl")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="CSGTorus3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.70711, 3.56845)
+mesh = SubResource("BoxMesh_0xm2m")
+material = SubResource("StandardMaterial3D_7mycd")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="CSGTorus3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.12567, 4.71654)
+mesh = SubResource("BoxMesh_0xm2m")
+material = SubResource("StandardMaterial3D_272bh")
+
+[node name="Player" parent="." instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75521, 1.02025, -3.68211)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_1bvp3")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Target Position" parent="Node" instance=ExtResource("4_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00466037, 4.01473, 4.76831)
+moving = true
+flying = true
+
+[node name="Target Position" parent="." instance=ExtResource("4_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.66818, 2.58211, 3.41352)
+
+[node name="Target Position2" parent="." instance=ExtResource("4_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0893841, 2.58211, 3.47984)
+explosive = true
+
+[node name="Target Position3" parent="." instance=ExtResource("4_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90495, 2.58211, 3.47883)
+
+[node name="Target Position4" parent="." instance=ExtResource("4_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90123, 1.519, 2.30815)
+
+[node name="Target Position5" parent="." instance=ExtResource("4_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0484929, 1.519, 2.32451)
+
+[node name="Target Position6" parent="." instance=ExtResource("4_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.16093, 1.519, 2.36774)

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://1fxa0omsvcx6"]
+
+[ext_resource type="Script" uid="uid://d16x2rfhap45l" path="res://bullet_launcher.gd" id="1_22i0i"]
+
+[node name="Bullet_Launcher" type="Node3D"]
+script = ExtResource("1_22i0i")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+autostart = true

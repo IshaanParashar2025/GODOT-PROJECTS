@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://ck67ifhq14qt2"]
+
+[ext_resource type="Script" uid="uid://w6gtlnn2e8bs" path="res://projectile_launcher.gd" id="1_5x3dk"]
+[ext_resource type="PackedScene" uid="uid://wg04s655j8xh" path="res://projectile.tscn" id="2_e3i07"]
+
+[node name="ProjectileLauncher" type="Node3D"]
+script = ExtResource("1_5x3dk")
+projectile = ExtResource("2_e3i07")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true

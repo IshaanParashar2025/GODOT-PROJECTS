@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://tu4naneru0lm"]
+
+[ext_resource type="Script" uid="uid://b17r6e5fbmmvm" path="res://ball.gd" id="1_x8fbi"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_41u45"]
+radius = 0.21
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x8fbi"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_41u45"]
+material = SubResource("StandardMaterial3D_x8fbi")
+radius = 0.21
+height = 0.42
+
+[node name="Ball" type="CharacterBody3D" groups=["Pickable"]]
+script = ExtResource("1_x8fbi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_41u45")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_41u45")

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhnbvrpkno6wb"]
+
+[ext_resource type="Script" uid="uid://cad621mtxjo1h" path="res://bullet.gd" id="1_v7oki"]
+
+[node name="Bullet" type="RayCast3D" groups=["Projectile"]]
+top_level = true
+script = ExtResource("1_v7oki")
+speed = 1000
+
+[node name="Timer" type="Timer" parent="." groups=["Projectile"]]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_destroy_bullet"]

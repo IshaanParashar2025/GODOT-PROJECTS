@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://ba2mdnwgvj46s"]
+
+[ext_resource type="Script" uid="uid://b4inlwg4vjpwx" path="res://mob_1.gd" id="1_u54e6"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8w7hd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u54e6"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_u54e6"]
+material = SubResource("StandardMaterial3D_u54e6")
+
+[node name="Mob1" type="CharacterBody3D"]
+script = ExtResource("1_u54e6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.586864, 0)
+shape = SubResource("CapsuleShape3D_8w7hd")
+debug_color = Color(0.988235, 0, 0, 1)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.588688, 0)
+mesh = SubResource("CapsuleMesh_u54e6")
+
+[connection signal="timeout" from="Timer" to="." method="_attack"]

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://wg04s655j8xh"]
+
+[ext_resource type="Script" uid="uid://hyi5m6xfu5bv" path="res://projectile.gd" id="1_a85iw"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_a85iw"]
+top_radius = 0.0
+bottom_radius = 0.25
+
+[node name="Projectile" type="RayCast3D" groups=["Projectile"]]
+top_level = true
+script = ExtResource("1_a85iw")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.29692, 0, 0, 0, -1.29788e-08, 0.29692, 0, -0.29692, -1.29788e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_a85iw")
+
+[connection signal="timeout" from="Timer" to="." method="clean_up"]
